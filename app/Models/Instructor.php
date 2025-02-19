@@ -10,7 +10,8 @@ use Laravel\Sanctum\HasApiTokens;
 class Instructor extends Authenticatable
 {
     use Notifiable,HasApiTokens;
-    protected $guard = 'instructors';
+    protected $table = 'instructors';
+//    protected $guard = 'instructors';
     protected $fillable = [
         'first_name',
         'last_name',

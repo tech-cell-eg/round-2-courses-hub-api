@@ -12,7 +12,20 @@ Route::controller(\App\Http\Controllers\API\Student\AuthController::class)->pref
     Route::post('/login', 'login');
 });
 
-Route::controller(\App\Http\Controllers\API\Instructor\InstructorAuthController::class)->prefix('instructor')->group(function () {
+Route::controller(\App\Http\Controllers\API\Instrutor\InstructorAuthController::class)->prefix('instructor')->group(function () {
     Route::post('/register', 'register');
     Route::post('/login', 'login');
+});
+
+Route::controller(\App\Http\Controllers\API\Category\CategoryController::class)->prefix('category')->group(function () {
+   Route::get('/', 'index');
+});
+
+Route::controller(\App\Http\Controllers\API\Instrutor\CourseController::class)->middleware(['auth:instructors'])->prefix('instructor/course')->group(function () {
+    Route::post('/store', 'store');
+});
+
+Route::controller(\App\Http\Controllers\API\Courses\CourseController::class)->prefix('course')->group(function () {
+    Route::get('/', 'index');
+    Route::get('/{id}', 'show');
 });

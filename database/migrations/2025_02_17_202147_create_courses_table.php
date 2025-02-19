@@ -26,7 +26,6 @@ return new class extends Migration
             $table->time('end_time');
             $table->integer('enrolled_number');
             $table->foreignId('instructor_id')->references('id')->on('instructors')->cascadeOnDelete();
-            $table->foreignId('student_id')->nullable()->references('id')->on('users')->cascadeOnDelete();
             $table->foreignId('review_id')->nullable()->references('id')->on('reviews')->cascadeOnDelete();
             $table->timestamps();
         });
