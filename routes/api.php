@@ -17,6 +17,16 @@ Route::controller(\App\Http\Controllers\API\Instrutor\InstructorAuthController::
     Route::post('/login', 'login');
 });
 
+Route::controller(\App\Http\Controllers\API\Student\CourseController::class)->middleware(['auth:sanctum'])->prefix('student/course')->group(function () {
+    Route::get('/checkout/{id}', 'store');
+});
+
+Route::controller(\App\Http\Controllers\API\Student\CartController::class)->middleware(['auth:sanctum'])->prefix('student/cart')->group(function () {
+    Route::get('/', 'index');
+    Route::post('/add/{id}', 'store');
+    Route::delete('/remove/{id}', 'destroy');
+});
+
 Route::controller(\App\Http\Controllers\API\Category\CategoryController::class)->prefix('category')->group(function () {
    Route::get('/', 'index');
 });
