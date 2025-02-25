@@ -21,6 +21,7 @@ class Course extends Model
         'enrolled_number',
         'instructor_id'
     ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -30,6 +31,11 @@ class Course extends Model
     {
         return $this->belongsToMany(User::class, 'student_course', 'course_id', 'student_id')
             ->withTimestamps();
+    }
+
+    public function instructor()
+    {
+        return $this->belongsTo(Instructor::class,'instructor_id','id');
     }
 
 }

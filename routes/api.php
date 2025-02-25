@@ -39,3 +39,8 @@ Route::controller(\App\Http\Controllers\API\Courses\CourseController::class)->pr
     Route::get('/', 'index');
     Route::get('/{id}', 'show');
 });
+
+Route::controller(\App\Http\Controllers\API\Event\EventController::class)->prefix('event')->group(function () {
+   Route::get('/', 'index');
+   Route::get('/show/{id}', 'show');
+});

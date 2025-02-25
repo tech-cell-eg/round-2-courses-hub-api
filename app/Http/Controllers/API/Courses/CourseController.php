@@ -12,13 +12,13 @@ use Illuminate\Http\Response;
 class CourseController extends Controller
 {
     public function index(){
-        $courses = Course::get();
+        $courses = Course::where('status','approved')->get();
         return ApiResponse::sendResponse(Response::HTTP_OK, 'All courses',CourseResource::collection($courses));
     }
 
     public function show($id)
     {
-        $courses = Course::where('category_id',$id)->get();
+        $courses = Course::where('status','approved')->where('category_id',$id)->get();
         return ApiResponse::sendResponse(Response::HTTP_OK, 'Course retrieved successfully',CourseResource::collection($courses));
     }
 }

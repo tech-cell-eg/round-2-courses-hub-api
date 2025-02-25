@@ -9,7 +9,8 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Instructor extends Authenticatable
 {
-    use Notifiable,HasApiTokens;
+    use Notifiable, HasApiTokens;
+
     protected $table = 'instructors';
 //    protected $guard = 'instructors';
     protected $fillable = [
@@ -31,5 +32,10 @@ class Instructor extends Authenticatable
         'degree-sought',
         'begin-studies',
     ];
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
 
 }
