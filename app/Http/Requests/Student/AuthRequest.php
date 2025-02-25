@@ -26,7 +26,7 @@ class AuthRequest extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'phone'=>'required|string',
-            'password'=>['required',Rules\password::defaults()],
+            'password'=>['required','string','min:6'],
         ];
     }
 }
