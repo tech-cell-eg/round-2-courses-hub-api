@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreignId('student_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreignId('course_id')->references('id')->on('courses')->onDelete('cascade')->cascadeOnDelete();
             $table->unique(['student_id', 'course_id']);
             $table->timestamps();
         });

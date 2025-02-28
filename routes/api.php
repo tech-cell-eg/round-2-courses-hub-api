@@ -28,7 +28,7 @@ Route::controller(\App\Http\Controllers\API\Student\CartController::class)->midd
 });
 
 Route::controller(\App\Http\Controllers\API\Category\CategoryController::class)->prefix('category')->group(function () {
-   Route::get('/', 'index');
+    Route::get('/', 'index');
 });
 
 Route::controller(\App\Http\Controllers\API\Instrutor\CourseController::class)->middleware(['auth:instructors'])->prefix('instructor/course')->group(function () {
@@ -41,6 +41,11 @@ Route::controller(\App\Http\Controllers\API\Courses\CourseController::class)->pr
 });
 
 Route::controller(\App\Http\Controllers\API\Event\EventController::class)->prefix('event')->group(function () {
-   Route::get('/', 'index');
-   Route::get('/show/{id}', 'show');
+    Route::get('/', 'index');
+    Route::get('/show/{id}', 'show');
+});
+
+Route::controller(\App\Http\Controllers\API\Courses\RatingController::class)->group(function () {
+    Route::post('/rating/{course_id}', 'store')->middleware('auth:sanctum');
+    Route::get('/courses/{course_id}/ratings', 'show');
 });

@@ -23,17 +23,17 @@ class CategoryController extends Controller
 
     public function create()
     {
-        if (!auth()->guard('admins')->user()->can('category-create')) {
-            abort(403, 'Unauthorized');
-        }
+//        if (!auth()->guard('admins')->user()->can('category-create')) {
+//            abort(403, 'Unauthorized');
+//        }
         return view('dashboard.categories.create');
     }
 
     public function store(CategoryRequest $request)
     {
-        if (!auth()->guard('admins')->user()->can('category-store')) {
-            abort(403, 'Unauthorized');
-        }
+//        if (!auth()->guard('admins')->user()->can('category-store')) {
+//            abort(403, 'Unauthorized');
+//        }
         $validated = $request->validated();
         Category::create($validated);
         return redirect()->route('categories.index')->with('success', 'Category created successfully.');

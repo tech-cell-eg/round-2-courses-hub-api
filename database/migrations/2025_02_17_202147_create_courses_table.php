@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image');
             $table->text('course_description');
             $table->text('what_will_i_learn_from_this_course');
+            $table->text('content');
             $table->foreignId('category_id')->references('id')->on('categories')->cascadeOnDelete();
             $table->string('language');
             $table->json('curriculum');
@@ -24,9 +26,8 @@ return new class extends Migration
             $table->json('course_day');
             $table->time('start_time');
             $table->time('end_time');
-            $table->integer('enrolled_number');
+            $table->integer('enrolled_number')->default(0);
             $table->foreignId('instructor_id')->references('id')->on('instructors')->cascadeOnDelete();
-            $table->foreignId('review_id')->nullable()->references('id')->on('reviews')->cascadeOnDelete();
             $table->timestamps();
         });
     }

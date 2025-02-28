@@ -12,6 +12,7 @@
                     <thead class="table-warning">
                     <tr>
                         <th>#</th>
+                        <th>image</th>
                         <th>Course Name</th>
                         <th>Instructor</th>
                         <th>Category</th>
@@ -23,6 +24,7 @@
                     @foreach($approvalCourses as $index => $course)
                         <tr>
                             <td>{{ $index + 1 }}</td>
+                            <td><img src="{{ asset('images/' . $course->image) }}" alt="" width="100px"></td>
                             <td>{{ $course->name }}</td>
                             <td>{{ $course->instructor->first_name .' '. $course->instructor->last_name}}</td>
                             <td>{{ $course->category->name }}</td>
