@@ -23,6 +23,7 @@ class CourseRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'course_description' => 'required|string',
             'what_will_i_learn_from_this_course' => 'required|string',
             'category_id' => 'required|exists:categories,id',

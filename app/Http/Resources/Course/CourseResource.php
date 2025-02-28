@@ -15,9 +15,11 @@ class CourseResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id'=>$this->id,
             'name' => $this->name,
+            'image'=>'/images/'.$this->image,
             'course_description' => $this->course_description,
-            'what_will_i_learn' => $this->what_will_i_learn_from_this_course,
+            'benefits' => $this->what_will_i_learn_from_this_course,
             'category' => $this->category->name,
             'language' => $this->language,
             'curriculum' => is_array($this->curriculum) ? $this->curriculum : json_decode($this->curriculum, true) ?? [],
@@ -27,7 +29,6 @@ class CourseResource extends JsonResource
             'start_time' => $this->start_time,
             'end_time' => $this->end_time,
             'enrolled_number' => $this->enrolled_number,
-//            'review' => $this->review ? new ReviewResource($this->review) : null,
         ];
 
     }

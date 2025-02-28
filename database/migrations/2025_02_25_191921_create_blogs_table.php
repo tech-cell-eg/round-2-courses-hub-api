@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('carts', function (Blueprint $table) {
+        Schema::create('blogs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreignId('course_id')->references('id')->on('courses')->onDelete('cascade')->cascadeOnDelete();
-            $table->unique(['student_id', 'course_id']);
             $table->timestamps();
         });
     }
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cart');
+        Schema::dropIfExists('blogs');
     }
 };
